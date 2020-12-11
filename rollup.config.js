@@ -30,11 +30,13 @@ import cssnano from 'cssnano';
 
 import nodePolyfills from 'rollup-plugin-node-polyfills'
 
+import typescript from 'rollup-plugin-typescript'
+
 const env = process.env.NODE_ENV;
 
 export default {
   // 入口文件我这里在components下统一导出所有自定义的组件
-  input: 'src/table.js',
+  input: 'src/table.tsx',
   // 输出文件夹，可以是个数组输出不同格式（umd,cjs,es...）通过env是否是生产环境打包来决定文件命名是否是.min
   output: [{
     file: `dist/dna-ui-react-umd${env === 'production' ? '.min' : ''}.js`,
@@ -59,6 +61,7 @@ export default {
   external: ['antd', '@ant-design/icons', 'react', 'prop-types', 'gojs'],
   // 插件
   plugins: [
+    typescript(),
     image(),
     postcss({
       plugins: [

@@ -5,7 +5,7 @@ const loose = true
 
 module.exports = {
   // 设置modules:false来避免babel转换成commonjs之后rollup执行会报错
-  presets: [['@babel/env', { loose, modules: false }]],
+  presets: ["@babel/preset-typescript", ['@babel/env', { loose, modules: false }]],
   plugins: [
     ['@babel/proposal-decorators', { legacy: true }],
     ['@babel/proposal-object-rest-spread', { loose }],
